@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energias Renováveis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="js/main.js"></script>
+    <script defer src="js/charts.js"></script>
+    <script defer src="js/animations.js"></script>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">Energia Limpa</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#solar">Energia Solar</a></li>
+                <li><a href="#eolica">Energia Eólica</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero-section" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero-bg.jpg');">
+        <div class="hero-content">
+            <h1>O Futuro é Renovável</h1>
+            <p>Descubra o potencial das energias solar e eólica em nossa região</p>
+            <div class="cta-buttons">
+                <button onclick="location.href='#solar'" class="btn-primary">Energia Solar</button>
+                <button onclick="location.href='#eolica'" class="btn-secondary">Energia Eólica</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="solar" class="energy-section">
+            <h2>Energia Solar</h2>
+            <div class="energy-content">
+                <div class="energy-info">
+                    <h3>Como Funciona a Energia Solar</h3>
+                    <p>A energia solar é captada através de células fotovoltaicas que convertem a luz solar diretamente em eletricidade. Este processo utiliza o efeito fotovoltaico, onde fótons da luz solar são absorvidos pelos painéis e geram uma corrente elétrica.</p>
+                    
+                    <div class="energy-advantages">
+                        <div class="advantage-card">
+                            <h4>Energia Limpa</h4>
+                            <p>Zero emissões de gases de efeito estufa durante a geração</p>
+                        </div>
+                        <div class="advantage-card">
+                            <h4>Renovável</h4>
+                            <p>Fonte inesgotável de energia disponível diariamente</p>
+                        </div>
+                        <div class="advantage-card">
+                            <h4>Baixa Manutenção</h4>
+                            <p>Sistema durável com mínima necessidade de manutenção</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="panel-types">
+                    <div class="panel-type">
+                        <img src="images/mono-icon.svg" alt="Painel Monocristalino">
+                        <h4>Monocristalino</h4>
+                        <p>Alta eficiência e durabilidade, ideal para espaços limitados. Eficiência típica de 15-22%.</p>
+                    </div>
+                    <div class="panel-type">
+                        <img src="images/poly-icon.svg" alt="Painel Policristalino">
+                        <h4>Policristalino</h4>
+                        <p>Boa relação custo-benefício, eficiência de 13-17%. Excelente para grandes instalações.</p>
+                    </div>
+                    <div class="panel-type">
+                        <img src="images/thin-icon.svg" alt="Filme Fino">
+                        <h4>Filme Fino</h4>
+                        <p>Flexível e leve, ideal para superfícies curvas. Menor eficiência mas muito versátil.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="eolica" class="energy-section">
+            <h2>Energia Eólica</h2>
+            <div class="energy-content">
+                <div class="energy-info">
+                    <h3>Como Funciona a Energia Eólica</h3>
+                    <p>A energia eólica é gerada através do movimento das pás das turbinas, que são movidas pela força dos ventos. Este movimento mecânico é convertido em energia elétrica através de um gerador.</p>
+                    
+                    <div class="energy-advantages">
+                        <div class="advantage-card">
+                            <h4>Alta Eficiência</h4>
+                            <p>Grande capacidade de geração em áreas com bons ventos</p>
+                        </div>
+                        <div class="advantage-card">
+                            <h4>Complementar</h4>
+                            <p>Funciona dia e noite, complementando outras fontes renováveis</p>
+                        </div>
+                        <div class="advantage-card">
+                            <h4>Baixo Impacto</h4>
+                            <p>Permite uso do terreno para outras atividades como agricultura</p>
+                        </div>
+                    </div>
+                </div>
+                <img src="images/wind-turbines.jpg" alt="Turbinas Eólicas" class="section-image">
+            </div>
+        </section>
+    </main>
+
+        <section id="comparacao" class="comparison-section">
+            <h2>Comparativo entre Energias</h2>
+            <div class="interactive-comparison">
+                <div class="comparison-charts">
+                    <canvas id="costChart"></canvas>
+                    <canvas id="efficiencyChart"></canvas>
+                </div>
+                <div class="calculator-widget">
+                    <h3>Calculadora de Economia</h3>
+                    <form id="savings-calculator">
+                        <div class="input-group">
+                            <label for="monthly-consumption">Consumo Mensal (kWh)</label>
+                            <input type="number" id="monthly-consumption" required>
+                        </div>
+                        <button type="submit" class="btn-calculate">Calcular Economia</button>
+                    </form>
+                    <div id="calculator-results"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dados" class="regional-data">
+            <h2>Dados Regionais</h2>
+            <div id="interactive-map"></div>
+            <div class="data-tables">
+                <!-- Regional data tables will be populated dynamically -->
+            </div>
+        </section>
+
+        <section id="noticias" class="news-section">
+            <h2>Últimas Notícias</h2>
+            <div class="news-grid">
+                <!-- News items will be populated dynamically -->
+            </div>
+        </section>
+
+        <section id="contato" class="contact-section">
+            <h2>Entre em Contato</h2>
+            <div class="contact-container">
+                <form id="contact-form">
+                    <input type="text" placeholder="Nome" required>
+                    <input type="email" placeholder="E-mail" required>
+                    <textarea placeholder="Mensagem" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+                <div class="social-links">
+                    <!-- Social media links -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">EcoEnergy</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="energia-solar.html">Energia Solar</a>
+                <a href="energia-eolica.html">Energia Eólica</a>
+            </div>
+        </nav>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">EcoEnergy</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#solar">Energia Solar</a></li>
+                <li><a href="#eolica">Energia Eólica</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="footer-section">
+        <h3>Links Úteis</h3>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#solar">Energia Solar</a></li>
+            <li><a href="#eolica">Energia Eólica</a></li>
+        </ul>
+    </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EcoEnergy - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html>

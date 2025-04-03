@@ -1,0 +1,36 @@
+[data-theme="dark"] {
+    --primary-color: #2ecc71;
+    --secondary-color: #3498db;
+    --dark-color: #ecf0f1;
+    --light-color: #2c3e50;
+    background-color: #1a1a1a;
+}
+
+[data-theme="dark"] .main-nav {
+    background: rgba(26, 26, 26, 0.95);
+}
+
+[data-theme="dark"] .info-card,
+[data-theme="dark"] .calculator-widget {
+    background: #2d2d2d;
+    color: #ecf0f1;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
+    background: #333;
+    border-color: #444;
+    color: #ecf0f1;
+}
+
+[data-theme="dark"] .comparison-section {
+    background: #2d2d2d;
+}
+
+[data-theme="dark"] .nav-links a {
+    color: #ecf0f1;
+}
+
+[data-theme="dark"] .nav-links a:hover {
+    color: var(--primary-color);
+}
